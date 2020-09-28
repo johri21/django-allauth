@@ -25,11 +25,11 @@ class OktaProvider(OAuth2Provider):
         return data
 
     def extract_email_addresses(self, data):
-        return EmailAddress(
+        return [EmailAddress(
             email=data["email"],
             verified=bool(data["email_verified"]),
             primary=True
-        )
+        )]
 
     def extract_common_fields(self, data):
         return dict(email=data["email"],

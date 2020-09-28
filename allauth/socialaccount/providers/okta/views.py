@@ -44,7 +44,7 @@ class OktaOAuth2Adapter(OAuth2Adapter):
         :return:
         """
 
-        resp = requests.get(self.userinfo_url, headers={'Authorization': token})
+        resp = requests.get(self.userinfo_url, headers={"Authorization": "Bearer {}".format(token.token)})
 
         resp.raise_for_status()
         extra_data = resp.json()
